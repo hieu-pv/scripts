@@ -1,0 +1,5 @@
+#!/bin/bash
+
+source .env
+
+mysql -u "$DB_USER" --password="$DB_PASSWORD" -e "show databases"

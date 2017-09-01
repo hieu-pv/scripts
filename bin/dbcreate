@@ -1,0 +1,41 @@
+#!/bin/bash
+
+source .env
+
+DB_NAME="$1"
+DROP_DATABASE=false
+
+#parse params
+while [[ $# -gt 0 ]]
+do
+key="$1"
+
+case $key in
+    -d|--drop)
+    DROP_DATABASE=true
+    ;;
+esac
+shift # past argument or value
+done
+
+if [ -z ${DB_NAME+x} ]; then
+    echo 'Please enter database name that you want to create'
+    exit
+fi
+
+#drop database with name if needed
+if $DROP_DATABASE ; then
+    {
+        mysql -u "$DB_USER" --password="$DB_PASSWORD" -e "drop database $DB_NAME;"
+        echo -e "${GREEN_COLOR}Database dropped${NO_COLOR}"
+    } || {
+        echo -e "${RED_COLOR}Can't drop database${NO_COLOR}"
+    }
+fi
+
+{
+    mysql -u "$DB_USER" --password="${DB_PASSWORD}" -e "create database $DB_NAME;" &&
+    echo -e "${GREEN_COLOR}Database \"$DB_NAME\" created${NO_COLOR}"
+} || {
+    echo -e "${RED_COLOR}Can't create database${NO_COLOR}"
+}

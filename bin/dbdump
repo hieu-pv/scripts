@@ -1,0 +1,79 @@
+#!/bin/bash
+
+source .env
+
+CREATE_DATABASE=false
+DROP_DATABASE=false
+
+SUPER_VISOR_RESTART_REQUIRED=false
+
+DB_NAME="$1"
+SQL_FILE_PATH="$2"
+
+#parse params
+while [[ $# -gt 0 ]]
+do
+key="$1"
+
+case $key in
+    -d|--drop)
+    DROP_DATABASE=true
+    ;;
+    -c|--create)
+    CREATE_DATABASE=true
+    ;;
+    -u|--user)
+    DB_USER="$2"
+    ;;
+    -p|--password)
+    DB_PASSWORD="$2"
+    ;;
+    -s|--supervisor)
+    SUPER_VISOR_RESTART_REQUIRED=true
+    ;;
+esac
+shift # past argument or value
+done
+
+if [ -z ${DB_NAME+x} ]; then
+    echo 'Please enter database name that you want to drop'
+    exit
+fi
+
+if [ -z ${SQL_FILE_PATH+x} ]; then
+	SQL_FILE_PATH="${DB_NAME}.sql"
+fi
+#stop supervisor service if needed
+if $SUPER_VISOR_RESTART_REQUIRED ; then
+	service supervisor stop
+fi
+#drop database with name if needed
+if $DROP_DATABASE ; then
+    {
+        mysql -u "$DB_USER" --password="$DB_PASSWORD" -e "drop database $DB_NAME;"
+        echo -e "${GREEN_COLOR}Database dropped${NO_COLOR}"
+    } || {
+        echo -e "${RED_COLOR}Can't drop database${NO_COLOR}"
+    }
+fi
+#create new database with name if needed
+if $CREATE_DATABASE ; then
+    {
+        mysql -u "$DB_USER" --password="${DB_PASSWORD}" -e "create database $DB_NAME;" &&
+        echo -e "${GREEN_COLOR}Database created${NO_COLOR}"
+    } || {
+        echo -e "${RED_COLOR}Can't create database${NO_COLOR}"
+    }
+fi
+#dump
+{
+    echo -e "${GREEN_COLOR}Start dump${NO_COLOR}" &&
+    mysql -u "$DB_USER" --password="$DB_PASSWORD" "$DB_NAME" < "$SQL_FILE_PATH" &&
+    echo -e "${GREEN_COLOR}Complete dump${NO_COLOR}"
+} || {
+    echo -e "${RED_COLOR}Error${NO_COLOR}"
+}
+#start supervisor service again if it is stopped before
+if $SUPER_VISOR_RESTART_REQUIRED ; then
+	service supervisor start
+fi

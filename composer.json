@@ -1,0 +1,13 @@
+{
+    "name": "nf/scripts",
+    "authors": [
+        {
+            "name": "Hieupv",
+            "email": "hieupv@codersvn.com"
+        }
+    ],
+    "require": {},
+    "bin": [
+    	"bin/*"
+    ],
+}
