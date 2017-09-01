@@ -23,9 +23,9 @@ dbcreate {database_name} [-d|--drop]
 ```
 dbdump {database_name} {relative_path_to_your_sql_file} [-d|--drop] [-c|--create] [-u|--user] [-p|--password]
 ```
--d|--drop (optional) drop your existing database
+-d|--drop (optional) drop your existing database before dump
 
--d|--drop (optional) create new database
+-d|--drop (optional) create new database before dump
 
 -u|--user (optional) MySQL username if you want to run this command with given username
 
