@@ -12,6 +12,6 @@
     	"bin/dbdump",
     	"bin/dbdrop",
     	"bin/dbshow",
-    	"bin/edithost"
+    	"bin/edithost",
     ],
 }
