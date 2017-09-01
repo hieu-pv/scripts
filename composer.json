@@ -1,17 +1,9 @@
 {
     "name": "nf/scripts",
-    "authors": [
-        {
-            "name": "Hieupv",
-            "email": "hieupv@codersvn.com"
-        }
-    ],
+    "authors": [{
+        "name": "Hieupv",
+        "email": "hieupv@codersvn.com"
+    }],
     "require": {},
-    "bin": [
-    	"bin/dbcreate",
-    	"bin/dbdump",
-    	"bin/dbdrop",
-    	"bin/dbshow",
-    	"bin/edithost",
-    ],
+    "bin": ["bin/dbcreate", "bin/dbdump", "bin/dbdrop", "bin/dbshow", "bin/edithost"]
 }
