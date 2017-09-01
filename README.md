@@ -30,3 +30,7 @@ dbdump {database_name} {relative_path_to_your_sql_file} [-d|--drop] [-c|--create
 -u|--user (optional) MySQL username if you want to run this command with given username
 
 -p|--password (optional) MySQL password if you want to run this command with given password
+##### Edit hosts file (Mac only)
+```
+edithost
+```
