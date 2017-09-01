@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source .env
+source .nfscripts.env
 
 DB_NAME="$1"
 DROP_DATABASE=false

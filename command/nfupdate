@@ -1,0 +1,29 @@
+#!/bin/bash
+
+RED_COLOR='\033[0;31m'
+GREEN_COLOR='\033[0;32m'
+NO_COLOR='\033[0m'
+
+
+
+DB_HOST="localhost"
+
+echo "Enter your mysql user:"
+
+read DB_USER
+
+echo "Enter your mysql password:"
+
+read DB_PASSWORD
+
+
+
+echo -e "DB_HOST=\"$DB_HOST\"" > .nfscripts.env
+echo -e "DB_USER=\"$DB_USER\"" >> .nfscripts.env
+echo -e "DB_PASSWORD=\"$DB_PASSWORD\"" >> .nfscripts.env
+echo "RED_COLOR=\"\033[0;31m\"" >> .nfscripts.env
+echo "GREEN_COLOR=\"\033[0;32m\"" >> .nfscripts.env
+echo "NO_COLOR=\"\033[0m\"" >> .nfscripts.env
+
+echo -e "${GREEN_COLOR}Your information is updated${NO_COLOR}"
+echo -e "${GREEN_COLOR}Try command \"nfupdate\" when you want to update them again${NO_COLOR}"

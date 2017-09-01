@@ -6,5 +6,10 @@
     }],
     "license": "MIT",
     "require": {},
-    "bin": ["bin/dbcreate", "bin/dbdump", "bin/dbdrop", "bin/dbshow", "bin/edithost"]
+    "bin": [".nfscripts.env","bin/dbcreate", "bin/dbdump", "bin/dbdrop", "bin/dbshow", "bin/edithost", "command/nfupdate"],
+    "scripts": {
+        "post-root-package-install": [
+            "nfupdate"
+        ],
+    }
 }

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source .env
+source .nfscripts.env
 
 CREATE_DATABASE=false
 
