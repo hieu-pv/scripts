@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-ENV_PATH="$DIR/../.nfscripts.env"
+ENV_PATH="$DIR/.nfscripts.env"
 
 
 RED_COLOR='\033[0;31m'
