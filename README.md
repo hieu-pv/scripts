@@ -10,23 +10,23 @@ nfupdate
 ```
 # Command
 
-##### Set ipv6off
+#### Set ipv6off
 Disable ipv6
 ```
 setv6off [-t|--type]
 ```
 -t|--type (optional) Wi-Fi or Ethernet
-##### List all your databases
+#### List all your databases
 The result is same with "show databases" query
 ```
 dbshow
 ```
-##### Create new database
+#### Create new database
 ```
 dbcreate {database_name} [-d|--drop]
 ```
 -d|--drop(optional) drop your existing database and create new one
-##### Dump database
+#### Dump database
 ```
 dbdump {database_name} {relative_path_to_your_sql_file} [-d|--drop] [-c|--create] [-u|--user] [-p|--password]
 ```
@@ -37,7 +37,7 @@ dbdump {database_name} {relative_path_to_your_sql_file} [-d|--drop] [-c|--create
 -u|--user (optional) MySQL username if you want to run this command with given username
 
 -p|--password (optional) MySQL password if you want to run this command with given password
-##### Edit hosts file (Mac only)
+#### Edit hosts file (Mac only)
 Open your hosts file 
 ```
 edithost
