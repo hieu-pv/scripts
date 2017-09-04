@@ -1,0 +1,25 @@
+#!/bin/bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source "$DIR/.nfscripts.env"
+
+TYPE="Wi-Fi"
+
+while [[ $# -gt 0 ]]
+do
+key="$1"
+
+
+case $key in
+    -t|--type)
+    TYPE="$2"
+    ;;
+esac
+shift # past argument or value
+done
+
+if [ "$TYPE" == "Wi-Fi" ] || [ "$TYPE" == "Ethernet" ] ; then
+    networksetup -setv6off $TYPE
+else
+    echo -e "${RED_COLOR}type is not valid, accept \"Wi-Fi\" and \"Ethernet\" only ${NO_COLOR}"
+fi
