@@ -9,6 +9,13 @@ composer global require nf/scripts
 nfupdate
 ```
 # Command
+
+##### Set ipv6off
+Disable ipv6
+```
+setv6off [-t|--type]
+```
+-t|--type (optional) Wi-Fi or Ethernet
 ##### List all your databases
 The result is same with "show databases" query
 ```
