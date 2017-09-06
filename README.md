@@ -5,7 +5,7 @@ composer global require nf/scripts
 ```
 Make sure to place the $HOME/.composer/vendor/bin directory (or the equivalent directory for your OS) in your $PATH so the laravel executable can be located by your system.
 
-Update your information by run update command, we do it whenever you want to change your information
+Update your information by run update command, whenever you want to change your information just run this command again
 ```
 nfupdate
 ```
