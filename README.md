@@ -1,16 +1,16 @@
 # Installation
-* First, download the package using Composer:
+First, download the package using Composer:
 ```
 composer global require nf/scripts
 ```
-* Make sure to place the $HOME/.composer/vendor/bin directory (or the equivalent directory for your OS) in your $PATH so the laravel executable can be located by your system.
-* Update your information by run update command, we do it whenever you want to change your information
+Make sure to place the $HOME/.composer/vendor/bin directory (or the equivalent directory for your OS) in your $PATH so the laravel executable can be located by your system.
+Update your information by run update command, we do it whenever you want to change your information
 ```
 nfupdate
 ```
 # Command
 
-#### Set ipv6off
+#### Disable ipv6 (Mac only)
 Disable ipv6
 ```
 setv6off [-t|--type]
