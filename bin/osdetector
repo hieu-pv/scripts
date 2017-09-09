@@ -11,19 +11,19 @@ OS="UNNAME"
 
 case "$OSTYPE" in
     solaris*) 
-        OS=OS_SOLARIS 
+        OS=$OS_SOLARIS 
         ;;
     darwin*)  
-        OS=OS_OSX 
+        OS=$OS_OSX 
         ;; 
     linux*)   
-        OS=OS_LINUX 
+        OS=$OS_LINUX 
         ;;
     bsd*)       
-        OS=OS_BSD 
+        OS=$OS_BSD 
         ;;
     msys*)      
-        OS=OS_WINDOWS 
+        OS=$OS_WINDOWS 
         ;;
     *)        
 esac

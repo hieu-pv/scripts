@@ -3,14 +3,31 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source "$DIR/.nfscripts.env"
 source "$DIR/osdetector"
 
-if ["$OS" == "$OS_OSX"] || ["$OS" == "$OS_LINUX"]; then
+
+if [ "$OS" == "$OS_WINDOWS" ] ; then
+    {
+        start "C:\Windows\System32\drivers\etc\hosts"
+    } || {
+        echo -e "${RED_COLOR}Error${NO_COLOR}"
+    }
+else
     SUBL="$(which subl)"
-    SUBL_EXIST=false
     if [ -z ${SUBL+x} ]; then
-        SUBL_EXIST=false
+        {
+            nano /etc/hosts
+        } || {
+            echo -e "${RED_COLOR}Error${NO_COLOR}"
+        }
     else
-        SUBL_EXIST=true
+        {
+            subl /etc/hosts
+        } || {
+            {
+                nano /etc/hosts
+            } || {
+                echo -e "${RED_COLOR}Error${NO_COLOR}"
+            }
+        }
     fi
-    echo $SUBL_EXIST
-if
+fi
 
