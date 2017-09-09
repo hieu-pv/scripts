@@ -1,1 +1,16 @@
-open -a /Applications/Sublime\ Text.app/ /etc/hosts
+#!/bin/bash
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source "$DIR/.nfscripts.env"
+source "$DIR/osdetector"
+
+if ["$OS" == "$OS_OSX"] || ["$OS" == "$OS_LINUX"]; then
+    SUBL="$(which subl)"
+    SUBL_EXIST=false
+    if [ -z ${SUBL+x} ]; then
+        SUBL_EXIST=false
+    else
+        SUBL_EXIST=true
+    fi
+    echo $SUBL_EXIST
+if
+
