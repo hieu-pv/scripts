@@ -1,0 +1,30 @@
+#!/bin/bash
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source "$DIR/.nfscripts.env"
+
+OS_SOLARIS="SOLARIS"
+OS_OSX="OSX"
+OS_LINUX="LINUX"
+OS_BSD="BSD"
+OS_WINDOWS="WINDOWS"
+OS_WINDOWS_NT="Windows_NT"
+OS="UNNAME"
+
+case "$OSTYPE" in
+    solaris*) 
+        OS=$OS_SOLARIS 
+        ;;
+    darwin*)  
+        OS=$OS_OSX 
+        ;; 
+    linux*)   
+        OS=$OS_LINUX 
+        ;;
+    bsd*)       
+        OS=$OS_BSD 
+        ;;
+    msys*)      
+        OS=$OS_WINDOWS 
+        ;;
+    *)        
+esac

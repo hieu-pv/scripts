@@ -4,7 +4,7 @@ source "$DIR/.nfscripts.env"
 source "$DIR/osdetector"
 
 
-if [ "$OS" == "$OS_WINDOWS" ] ; then
+if [ "$OS" == "$OS_WINDOWS" ] || [ "$OS" == "$OS_WINDOWS_NT" ] ; then
     {
         start "C:\Windows\System32\drivers\etc\hosts"
     } || {
