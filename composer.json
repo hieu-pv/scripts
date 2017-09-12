@@ -8,14 +8,14 @@
     "require": {},
     "bin": [
         ".nfscripts.env",
-        "bin/shared/osdetector",
-        "bin/database/dbcreate",
-        "bin/database/dbdump",
-        "bin/database/dbdrop",
-        "bin/database/dbshow",
+        "osdetector",
+        "dbcreate",
+        "dbdump",
+        "dbdrop",
+        "dbshow",
         "edithost",
-        "bin/network/setv6off",
-        "command/nfupdate"
+        "setv6off",
+        "nfupdate"
     ],
     "scripts": {
         "post-install-cmd": [
