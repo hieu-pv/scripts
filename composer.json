@@ -13,7 +13,7 @@
         "bin/database/dbdump",
         "bin/database/dbdrop",
         "bin/database/dbshow",
-        "bin/edithost",
+        "edithost",
         "bin/network/setv6off",
         "command/nfupdate"
     ],
