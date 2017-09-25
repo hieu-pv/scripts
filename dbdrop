@@ -3,9 +3,8 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source "$DIR/.nfscripts.env"
 
-CREATE_DATABASE=false
-
 SUPER_VISOR_RESTART_REQUIRED=false
+DB_NAME="$1"
 
 #parse params
 while [[ $# -gt 0 ]]
@@ -14,32 +13,14 @@ key="$1"
 
 
 case $key in
-    -c|--create)
-    CREATE_DATABASE=true
-    shift # past argument
-    ;;
-    -n|--name)
-    DB_NAME="$2"
-    shift # past argument
-    ;;
     -s|--supervisor)
     SUPER_VISOR_RESTART_REQUIRED=true
     shift # past argument
-    ;;
-    --default)
-    DEFAULT=YES
-    ;;
-    *)
-    error "unknow option"
     ;;
 esac
 shift # past argument or value
 done
 
-if [ -z ${DB_NAME+x} ]; then
-	echo 'Please enter database name that you want to drop'
-	exit
-fi
 
 if $SUPER_VISOR_RESTART_REQUIRED ; then
 	service supervisor stop
@@ -47,11 +28,6 @@ fi
 
 mysql -u "$DB_USER" --password="$DB_PASSWORD" -e "drop database $DB_NAME;"
 echo -e "${GREEN_COLOR}Database dropped${NO_COLOR}"
-
-if $CREATE_DATABASE ; then
-    mysql -u "$DB_USER" --password="secret" -e "create database $DB_NAME;"
-    echo -e "${GREEN_COLOR}Database created${NO_COLOR}"
-fi
 
 if $SUPER_VISOR_RESTART_REQUIRED ; then
 	service supervisor start
