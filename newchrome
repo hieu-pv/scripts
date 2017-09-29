@@ -30,4 +30,4 @@ if [ ! -d "$USER_DIR" ]; then
 fi
 
 
-'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --user-data-dir=$USER_DIR > /dev/null 2>&1
+'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --user-data-dir=$USER_DIR > /dev/null 2>&1 &
