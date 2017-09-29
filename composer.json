@@ -15,7 +15,8 @@
         "dbshow",
         "edithost",
         "setv6off",
-        "nfupdate"
+        "nfupdate",
+        "newchrome"
     ],
     "scripts": {
         "post-install-cmd": [
