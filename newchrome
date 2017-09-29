@@ -1,0 +1,33 @@
+#!/bin/bash
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source "$DIR/.nfscripts.env"
+
+no="1"
+
+
+#parse params
+while [[ $# -gt 0 ]]
+do
+key="$1"
+
+case $key in
+    -n|--no)
+    no=$2
+    ;;
+esac
+shift # past argument or value
+done
+
+BASE_DIR="$DIR/chromeuserdata"
+USER_DIR="$BASE_DIR/$no"
+
+if [ ! -d "$BASE_DIR" ]; then
+	mkdir $BASE_DIR
+fi
+
+if [ ! -d "$USER_DIR" ]; then
+	mkdir $USER_DIR
+fi
+
+
+'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --user-data-dir=$USER_DIR > /dev/null 2>&1
