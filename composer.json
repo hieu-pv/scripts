@@ -10,7 +10,7 @@
         ".nfscripts.env",
         "osdetector",
         "dbcreate",
-        "dbdump",
+        "dbimport",
         "dbdrop",
         "dbshow",
         "edithost",
